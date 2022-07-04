@@ -1,0 +1,574 @@
+/*
+Theme Name: Udimy 2
+Text Domain: udimy-2
+Version: 1.0
+Tested up to: 1.0.0
+Requires at least: 4.7
+Requires PHP: 5.2.4
+Description: Our default theme for 2020 is designed to take full advantage of the flexibility of the block editor. Organizations and businesses have the ability to create dynamic landing pages with endless layouts using the group and column blocks. The centered content column and fine-tuned typography also makes it perfect for traditional blogs. Complete editor styles give you a good idea of what your content will look like, even before you publish. You can give your site a personal touch by changing the background colors and the accent color in the Customizer. The colors of all elements on your site are automatically calculated based on the colors you pick, ensuring a high, accessible color contrast for your visitors.
+Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-patterns, block-styles, wide-blocks, accessibility-ready
+Author: the WordPress team
+Author URI: https://wordpress.org/
+Theme URI: https://wordpress.org/themes/twentytwenty/
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+All files, unless otherwise stated, are released under the GNU General Public
+License version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned
+with others.
+*/
+
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+
+	0. 	CSS Reset
+	1. 	Document Setup
+	2. 	Element Base
+	3. 	Helper Classes
+	4. 	Site Header
+	5. 	Menu Modal
+	6. 	Search Modal
+	7. 	Page Templates
+		a. 	Template: Cover Template
+		c. 	Template: Full Width
+	8.  Post: Archive
+	9.  Post: Single
+	10. Blocks
+	11. Entry Content
+	12. Comments
+	13. Site Pagination
+	14. Error 404
+	15. Widgets
+	16. Site Footer
+	17. Media Queries
+
+----------------------------------------------------------------------------- */
+*,
+*::after,
+*::before{
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+::selection{
+	color: white;
+	background-color: #324B44;
+}
+img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+body{
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+}
+ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	text-transform: capitalize;
+	font-family: 'Ubuntu', sans-serif;
+}
+h1{
+	font-size: 48px;
+}
+h2{
+	font-size: 42px;
+}
+h3{
+	font-size: 34px;
+}
+.h4{
+	font-size: 24px;
+}
+p{
+	font-size: 18px;
+	text-transform: capitalize;
+}
+.container{
+	max-width: 1100px;
+	margin: auto;
+}
+.clear{
+	clear: both;
+	overflow: hidden;
+}
+.more-link,
+.read-more-link{
+	color: #324B44;
+	font-size: 16px;
+	font-family: 'Poppins', sans-serif;
+}
+/** slider dots **/
+.owl-stage-outer{
+	position: relative;
+}
+button.owl-prev span,
+button.owl-next span {
+    font-size: 40px;
+    padding: 15px 10px;
+    background: #c3c3c3;
+    border-radius: 3px;
+    display: inline-block;
+	position: absolute;
+}
+button.owl-next span{
+	right: 10px;
+}
+button.owl-prev span{
+	left: 10px;
+}
+
+.owl-dots{
+	text-align: center;
+}
+button.owl-dot span {
+    padding: 5px;
+    background-color: #a7a7a7;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 25%;
+}
+button.owl-dot.active span {
+    background-color: #3a3a3a;
+}
+/** Header **/
+header.site-header{
+	background-color: #324B44;
+}
+
+header.site-header nav.site-menu ul li{
+	display: block;
+	text-align: center;
+	width: 100%;
+	margin-bottom: 5px;
+}
+header.site-header .menu-area {
+    text-align: center;
+}
+header.site-header .logo{
+	text-align: center;
+}
+header.site-header .logo img{
+	width: 180px;
+	height: auto;
+}
+header.site-header nav.site-menu ul li.current-menu-item a{
+	border-bottom: 2px solid #ffffff;
+}
+header.site-header nav.site-menu ul li a{
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #ffffff;
+	padding: 5px 0;
+	display: inline-block;
+	border-bottom: 2px solid transparent;
+	transition: all 0.5s ease;
+}
+header.site-header nav.site-menu ul li a:hover{
+	border-bottom: 2px solid #ffffff;
+}
+/** Footer **/
+footer.site-footer .footer-menu{
+	text-align: center;
+	display: none;
+}
+footer.site-footer .footer-menu ul li{
+	display: block;
+}
+footer.site-footer .footer-menu ul li a{
+	font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #324B44;
+    padding: 5px 0;
+    display: inline-block;
+    border: 2px solid transparent;
+    transition: all 0.5s ease;
+}
+footer.site-footer .copyright-text{
+	text-align: center;
+}
+footer.site-footer hr{
+	color: #324B44;
+	border: 2px solid #324B44;
+}
+/** Sidebare **/
+.testimonials li{
+	list-style: none;
+}
+.testimonials li .widget_title{
+	font-size: 20px;
+	text-transform: capitalize;
+}
+.textwidget p{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #000;
+	font-style: italic;
+}
+.primary-headre .logo a{
+	display: inline-block;
+	text-align: center;
+}
+/** Page thubmnails and title **/
+.featured{
+	position: relative;
+}
+.featured h1 {
+    display: inline-block;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 20px 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+}
+/** Front Page **/
+/* Front Page Image Widget */
+.home .front-image-widget .widget_title{
+	display: none;
+}
+.home .front-image-widget{
+	float: left;
+	width: 100%;
+	padding: 20px;
+}
+.home .front-image-widget .widget_sp_image-description p{
+	font-size: 16px;
+	padding: 10px;
+	background-color: #324B44;
+	color: white;
+	border-radius: 3px;
+	text-align: center;
+}
+/*----------------*/
+.front-page-bottom{
+	margin-top: 50px;
+}
+.home .cetagory-post .cetagory-post-data ul li .post-image_ {
+	width: 40%;
+	float: left;
+}
+.home .cetagory-post .cetagory-post-data ul li .post-content_{
+	width: 60%;
+	padding-left: 10px;
+	float: right;
+}
+.home .cetagory-post .cetagory-post-data ul li .post-content_ h3{
+	font-size: 22px;
+	margin: 0;
+	color: #324B44;
+}
+.home .cetagory-post .cetagory-post-data ul li{
+	overflow: hidden;
+	margin: 10px 0;
+}
+/** Blog **/
+ul.blog-post{
+	margin-top: 80px;
+}
+.post-featured a img{
+	width: 100%;
+	height: auto;
+}
+.post-featured {
+	position: relative;
+}
+.post-featured a:nth-child(2){
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	color: #000;
+	padding: 10px;
+	background-color: #ffffff;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-size: 14px;
+	margin: 5px;
+	border-radius: 3px;
+	font-family: 'Poppins', sans-serif;
+}
+.post-content{
+	font-family: 'Poppins', sans-serif;
+	color: #000;
+}
+.post-content h3{
+	font-size: 22px;
+	text-transform: capitalize;
+	margin: 10px 0;
+	color: #324B44;
+}
+.post-information{
+	padding: 10px;
+	background-color: #e2e2e2;
+	border-radius: 3px;
+	overflow: hidden;
+}
+.post-information .author{
+	float: left;
+}
+.post-information .author span{
+	color: #324B44;
+	font-weight: bold;
+}
+.post-information .date{
+	float: right;
+} 
+/** single post **/
+.single-post header .site-menu .current_page_parent a{
+	border-bottom: 2px solid #ffffff;
+}
+.single-blog-content{
+	margin-top: 50px;
+}
+.single article .post-info{
+	background-color: #e2e2e2;
+	border-radius: 3px;
+	padding: 10px;
+}
+.single article .post-info .columns{
+	margin: 10px 0;
+	text-transform: capitalize;
+	font-size: 16px;
+}
+.single article .post-info .columns a{
+	color: #324B44;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: capitalize;
+	font-weight: bold;
+	display: inline-block;
+}
+.single .comment-respond h3{
+	font-size: 24px;
+	margin: 10px 0;
+	color: #324B44;
+}
+.single .comment-respond h3 a,
+.single .comment-respond h3 small{
+	color: #324B44;
+}
+.single .comment-respond form p{
+	font-size: 16px;
+	text-transform: capitalize;
+}
+.single .comment-respond form p a{
+	font-size: 16px;
+	color: #324B44;
+	text-transform: capitalize;
+}
+.single form p{
+	margin: 10px 0;
+	font-size: 16px;
+}
+.single form p label{
+	font-weight: bold;
+	color: #324B44;
+}
+.single form p textarea{
+	height: 120px;
+}
+.single form p textarea,
+.single form p input{
+	padding: 10px;
+	color: #324B44;
+	font-size: 16px;
+}
+.single form p label,
+.single form p textarea,
+.single form p input{
+	display: block;
+	width: 100%;
+	font-family: 'Poppins', sans-serif;
+}
+.single form .comment-form-cookies-consent input,
+.single form .comment-form-cookies-consent label{
+	display: inline-block;
+	width: auto;
+}
+.single form .comment-form-cookies-consent{
+	overflow: hidden;
+}
+.single form .comment-form-cookies-consent input{
+	float: left;
+}
+.single form .comment-form-cookies-consent label{
+	width: 40%;
+}
+.single form .form-submit input.submit{
+	background-color: #324B44;
+	color: #ffffff;
+	border: none;
+	outline: none;
+	border-radius: 3px;
+	width: auto;
+	padding: 10px 20px;
+}
+/** commentlist **/
+.commentlist{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.commentlist li{
+	background-color: #e2e2e2;
+	padding: 20px;
+	border-radius: 3px;
+}
+.commentlist li ul li{
+	background-color: #ffffff;
+	margin: 5px 0;
+}
+.commentlist li ul li ul li{
+	background-color: #e2e2e2;
+}
+.commentlist li ul li ul li ul li{
+	background-color: #fff;
+}
+.commentlist li .comment-author.vcard img{
+	width: 20px;
+	height: auto;
+	margin: 10px 0;
+}
+.comment-author.vcard cite a{
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
+	color: #324B44;
+	font-size: 16px;
+	text-decoration: none;
+	text-transform: capitalize;
+}
+.comment-author.vcard span{
+	font-size: 16px;
+}
+.comment-meta.commentmetadata{
+	margin: 10px 0;
+}
+.comment-meta.commentmetadata a{
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: 'Poppins', sans-serif;
+}
+.comment-meta.commentmetadata .comment-edit-link{
+	font-weight: normal;
+}
+.reply a{
+	color: #324B44;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+/** Responsive **/
+@media only screen and (min-width: 768px){
+	header.site-header nav.site-menu ul li{
+		display: inline-block;
+		width: auto;
+		padding: 5px 15px;
+	}
+	footer.site-footer .footer-menu ul li{
+		display: inline-block;
+	}
+	footer.site-footer .footer-menu{
+		display: block;
+	}
+	.primary-section{
+		width: 70%;
+		float: left;
+	}
+	div#secondory-section {
+		width: 30%;
+		float: right;
+	}
+	.testimonials {
+		padding-left: 50px;
+		margin-top: 50px;
+	}
+	.primary-headre{
+		display: flex;
+		justify-content: center;
+		align-content: center;
+	}
+	.primary-headre .logo{
+		width: 40%;
+		text-align: left;
+		float: left;
+	}
+	header.site-header .logo{
+		text-align: left;
+	}
+	header.site-header .menu-area{
+		width: 60%;
+		text-align: right;
+	}
+	nav.site-menu {
+		height: 100%;
+		display: flex;
+		justify-content: end;
+		align-items: center;
+	}
+	header.site-header nav.site-menu ul li{
+		margin-bottom: 0;
+	}
+	ul.blog-post li.post-content{
+		width: 50%;
+		float: left;
+		min-height: 620px;
+		padding: 10px;
+	}
+	.post-featured a img{
+		width: 100%;
+		height: 280px;
+	}
+	/** Front Page Widget **/
+	.home .front-image-widget{
+		float: left;
+		width: 50%;
+		padding: 20px;
+	}
+}
+@media only screen and (min-width: 992px){
+	/**Blog **/
+	ul.blog-post li.post-content{
+		width: 33.33%;
+		float: left;
+		min-height: 620px;
+		padding: 10px;
+	}
+	.single form p label,
+	.single form p textarea,
+	.single form p input{
+		display: block;
+		width: 50%;
+	}
+	/** Front Page **/
+	.home .about-us-content{
+		width: 40%;
+		float: left;
+	}
+	.home .about-us-content h3{
+		margin: 0;
+		color: #324B44;
+		font-size: 22px;
+	}
+	.home .cetagory-post{
+		padding-left: 20px;
+		width: 60%;
+		float: right;
+	}
+	/** Front Page Widget **/
+	.home .front-image-widget{
+		float: left;
+		width: 33.33%;
+		padding: 20px;
+	}
+}
